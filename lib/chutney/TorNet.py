@@ -2003,10 +2003,10 @@ DEFAULTS = {
     # orport_base, dirport_base, controlport_base, socksport_base,
     # extorport_base, ptport_base: the initial port numbers used by nodenum 0.
     # Each additional node adds 1 to the port numbers.
-    'orport_base': 5000,
-    'dirport_base': 7000,
-    'controlport_base': 8000,
-    'socksport_base': 9000,
+    'orport_base': 5055,
+    'dirport_base': 7055,
+    'controlport_base': 8055,
+    'socksport_base': 9055,
     'extorport_base' : 9500,
     'ptport_base' : 9900,
 

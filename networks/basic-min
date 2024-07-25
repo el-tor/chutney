@@ -2,6 +2,7 @@
 Authority = Node(tag="a", authority=1, relay=1, torrc="authority.tmpl")
 ExitRelay = Node(tag="r", relay=1, exit=1, torrc="relay.tmpl")
 Client = Node(tag="c", client=1, torrc="client.tmpl")
+MiddleRelay = Node(tag="m", relay=1, torrc="relay.tmpl")  # Using the new or existing template
 
 # Since only 25% of relays get the guard flag,
 # TestingDirAuthVoteGuard * may need to be used in small networks
@@ -11,6 +12,6 @@ Client = Node(tag="c", client=1, torrc="client.tmpl")
 # that includes themselves.
 # Due to microdec download issues, tor 0.3.5 needs at least 5
 # authorities/relays/exits in the consensus.
-NODES = Authority.getN(4) + ExitRelay.getN(1) + Client.getN(1)
+NODES = Authority.getN(4) + ExitRelay.getN(1) + Client.getN(1) + MiddleRelay.getN(3) 
 
 ConfigureNodes(NODES)

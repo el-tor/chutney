@@ -40,7 +40,7 @@ PidFile ${dir}/pid
 Log notice file ${dir}/notice.log
 Log info file ${dir}/info.log
 # Turn this off to save space
-#Log debug file ${dir}/debug.log
+# Log debug file ${dir}/debug.log
 ProtocolWarnings 1
 SafeLogging 0
 LogTimeGranularity 1

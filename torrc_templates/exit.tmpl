@@ -1,0 +1,24 @@
+# torrc configuration for Tor Browser - testing configuration
+#
+# This configuration is for testing purposes only.
+
+BridgeRelay 1
+DirPort 0
+BridgeRecordUsageByCountry 0
+
+# Allow exiting to any IP address on any port
+ExitPolicy accept *:*
+
+# Ensure the node acts as an exit relay
+ExitRelay 1
+
+# Optionally, you can set a nickname for your exit node
+Nickname mytestexit
+
+# Specify the bandwidth rates for testing
+BandwidthRate 100 MBytes  # 100 MB/s
+BandwidthBurst 200 MBytes # 200 MB/s
+
+# Configure detailed logging for easier debugging
+Log notice file notice.log
+Log info file info.log

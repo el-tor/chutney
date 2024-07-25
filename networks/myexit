@@ -1,0 +1,15 @@
+# By default, Authorities are not configured as exits
+Authority = Node(tag="a", authority=1, relay=1, torrc="authority.tmpl")
+ExitRelay = Node(tag="r", relay=1, exit=0, torrc="relay.tmpl")
+Client = Node(tag="c", client=1, torrc="client.tmpl")
+
+ExitNode = Node(tag="exit", authority=0, relay=1, exit=1,
+                bridge=0, hs=0, hs_directory=0, hs_version=3,
+                torrc="exit.tmpl")
+
+#NODES = Authority.getN(3) + ExitRelay.getN(5) + Client.getN(2) + ExitNode.getN(1)
+
+NODES = Authority.getN(3) + ExitNode.getN(1) + Client.getN(2) 
+
+
+ConfigureNodes(NODES)

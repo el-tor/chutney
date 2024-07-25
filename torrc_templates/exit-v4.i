@@ -5,12 +5,12 @@ ExitRelay 1
 # -------------------------------------------------------------
 
 # Each IPv4 tor instance is configured with Address 127.0.0.1 by default
-ExitPolicy accept 127.0.0.0/8:*
+# ExitPolicy accept 127.0.0.0/8:*
 
 # If you only want tor to connect to localhost, disable these lines:
 # This may cause network failures in some circumstances
-ExitPolicyRejectPrivate 0
-ExitPolicy accept private:*
+# ExitPolicyRejectPrivate 0
+# ExitPolicy accept private:*
 
 # 2. Optionally: Allow exiting to the entire IPv4 internet on HTTP(S)
 # -------------------------------------------------------------------
@@ -21,8 +21,8 @@ ExitPolicy accept private:*
 #  exit policy summary code is pessimistic (needs the entire internet)."
 # An alternative is to disable microdescriptors and use regular
 # descriptors, as they do not suffer from this issue.
-#ExitPolicy accept *:80
-#ExitPolicy accept *:443
+ExitPolicy accept *:80
+ExitPolicy accept *:443
 
 # 3. Optionally: Accept all IPv4 addresses, that is, the public internet
 # ----------------------------------------------------------------------
@@ -30,4 +30,4 @@ ExitPolicy accept *:*
 
 # 4. Finally, reject all IPv4 addresses which haven't been permitted
 # ------------------------------------------------------------------
-ExitPolicy reject *:*
+# ExitPolicy reject *:*

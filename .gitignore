@@ -5,3 +5,9 @@
 *~
 
 /net/[^.]*
+
+**/node_modules/**
+
+eltor/lightning
+eltor/tor-proxy
+eltor/env.sh
