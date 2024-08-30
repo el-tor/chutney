@@ -47,12 +47,17 @@ sudo ifconfig lo0 alias 127.0.0.10 netmask 0xff000000
 11. Make sure you have valid preimage and payhash configs in the torrc config here `cat ~/Library/Application\ Support/TorBrowser-Data/Tor/torrc`
 
 
+
 # Tor Browser
 ```
 cd "/Applications/Tor Browser.app/Contents/Resources/TorBrowser/Tor"
 cd "$HOME/Library/Application Support/TorBrowser-Data"
 open "$HOME/Library/Application Support/TorBrowser-Data"
 ```
+
+**If the Tor browser has issues connecting try clearing the state (especially when switching between mainnet and chutney)
+`eltor/delState.sh `
+
 ## torrc
 ```
 code ~/Library/Application\ Support/TorBrowser-Data/Tor/torrc
@@ -238,7 +243,7 @@ $HOME/code/tor/src/app/tor --runasdaemon 0 --DataDirectory $HOME/code/chutney/ne
 ```
 about:config
 
-extensions.torlauncher.start_tor : false
+extensions.torlauncher.start_tor : true
 network.proxy.socks_host : 127.0.0.1
 network.proxy.socks_port : 9006 (9150 default)
 ```
