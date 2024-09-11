@@ -36,15 +36,21 @@ on mac (run `nic.sh`) for ip range 127.0.0.10-127.0.0.18
 sudo ifconfig lo0 alias 127.0.0.10 netmask 0xff000000
 ```
 
-7. then run `eltor/start.sh`
+7. Now set the torrc config for the Tor Browser to use chutney config
+```
+code ~/Library/Application\ Support/TorBrowser-Data/Tor/torrc
+```
+check out the `tor-browser-sample-torrc` file in this directory
 
-8. after you are done run `eltor/stop.sh`
+8. then run `eltor/start.sh`
 
-9. You can run `eltor/restart.sh` to restart the tor chutney testnet and clear debug logs
+9. after you are done run `eltor/stop.sh`
 
-10. This should open the tor browser. 
+10. You can run `eltor/restart.sh` to restart the tor chutney testnet and clear debug logs
 
-11. Make sure you have valid preimage and payhash configs in the torrc config here `cat ~/Library/Application\ Support/TorBrowser-Data/Tor/torrc`
+11. This should open the tor browser. 
+
+12. Make sure you have valid preimage and payhash configs in the torrc config here `cat ~/Library/Application\ Support/TorBrowser-Data/Tor/torrc`
 
 
 
@@ -54,6 +60,8 @@ cd "/Applications/Tor Browser.app/Contents/Resources/TorBrowser/Tor"
 cd "$HOME/Library/Application Support/TorBrowser-Data"
 open "$HOME/Library/Application Support/TorBrowser-Data"
 ```
+
+To reset the Tor Browser back to default `rm -rf "$HOME/Library/Application Support/TorBrowser-Data"`
 
 **If the Tor browser has issues connecting try clearing the state (especially when switching between mainnet and chutney)
 `eltor/delState.sh `
@@ -181,10 +189,9 @@ hhvdcwx7ytb6fnd2brn54w6rcpwzmmntczivzfxz6hoagi55ffg5wwad.onion
 ```
 
 
-
-
-
-
+Monitoring
+==========
+`nyx -i 127.0.0.1:8055`
 
 
 # ======Scratch Notes and Misc====== #
