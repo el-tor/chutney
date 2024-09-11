@@ -1,0 +1,7 @@
+SocksPort 9050
+
+# Set the data directory where Tor will store its data
+DataDirectory $HOME/code/chutney/tor-proxy
+
+# Log Tor messages to a specific file
+Log notice file $HOME/code/chutney/tor-proxy/notices.log

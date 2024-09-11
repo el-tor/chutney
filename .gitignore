@@ -9,5 +9,5 @@
 **/node_modules/**
 
 eltor/lightning
-eltor/tor-proxy
+eltor/tor-proxy/tor
 eltor/env.sh
