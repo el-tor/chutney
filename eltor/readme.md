@@ -31,26 +31,28 @@ export TOR_LOG="debug stdout"
 5. You might need to turn off your firewall or allow the relays thru 
 
 6. Configure you local network card to allow the relays to have unique loopback addresses.
-on mac (run `nic.sh`) for ip range 127.0.0.10-127.0.0.18
+on mac (run `nic.sh` and `fw.sh`) for ip range 127.0.0.10-127.0.0.18
 ```
 sudo ifconfig lo0 alias 127.0.0.10 netmask 0xff000000
 ```
 
-7. Now set the torrc config for the Tor Browser to use chutney config
+7. If this is your first running chutney bootstrap the network `./chutney configure networks/basic-min`
+
+8. Now set the torrc config for the Tor Browser to use chutney config
 ```
 code ~/Library/Application\ Support/TorBrowser-Data/Tor/torrc
 ```
 check out the `tor-browser-sample-torrc` file in this directory
 
-8. then run `eltor/start.sh`
+9. then run `eltor/start.sh`
 
-9. after you are done run `eltor/stop.sh`
+10. after you are done run `eltor/stop.sh`
 
-10. You can run `eltor/restart.sh` to restart the tor chutney testnet and clear debug logs
+11. You can run `eltor/restart.sh` to restart the tor chutney testnet and clear debug logs
 
-11. This should open the tor browser. 
+12. This should open the tor browser. 
 
-12. Make sure you have valid preimage and payhash configs in the torrc config here `cat ~/Library/Application\ Support/TorBrowser-Data/Tor/torrc`
+13. Make sure you have valid preimage and payhash configs in the torrc config here `cat ~/Library/Application\ Support/TorBrowser-Data/Tor/torrc`
 
 
 
@@ -253,4 +255,16 @@ about:config
 extensions.torlauncher.start_tor : true
 network.proxy.socks_host : 127.0.0.1
 network.proxy.socks_port : 9006 (9150 default)
+```
+
+
+## Python
+You might need an older version of python.
+```
+sudo add-apt-repository ppa:deadsnakes/ppa
+sudo apt update
+sudo apt install python3.8
+sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.8 2
+sudo update-alternatives --config python3
+
 ```
