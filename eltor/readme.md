@@ -42,7 +42,7 @@ sudo ifconfig lo0 alias 127.0.0.10 netmask 0xff000000
 ```
 code ~/Library/Application\ Support/TorBrowser-Data/Tor/torrc
 ```
-check out the `tor-browser-sample-torrc` file in this directory
+check out the `tor-chutney-sample-torrc` file in this directory
 
 9. then run `eltor/start.sh`
 
@@ -86,7 +86,7 @@ To reset the Tor Browser back to default `rm -rf "$HOME/Library/Application Supp
 ```
 code ~/Library/Application\ Support/TorBrowser-Data/Tor/torrc
 ```
-check out the `tor-browser-sample-torrc` file in this directory
+check out the `tor-chutney-sample-torrc` file in this directory
 
 ### Symobilic Links
 (replace nodes.1717275556 with your values below)
