@@ -55,6 +55,20 @@ check out the `tor-browser-sample-torrc` file in this directory
 13. Make sure you have valid preimage and payhash configs in the torrc config here `cat ~/Library/Application\ Support/TorBrowser-Data/Tor/torrc`
 
 
+# Running a relay
+See `tor-relay-sample-torrc` sample config file. 
+Make sure to configure your Address (IP), Nickname, OrPort (you might need to allow this port thru your firewall). 
+Run this command on the computer you want to become a El Tor Relay:
+```
+tor -f /path/to/torrc
+```
+El Tor TestNet `Directory Authority` Config
+```
+DirAuthority test000a orport=5055 no-v2 v3ident=08E3B412A2F9B7BE30CAC56285EB0A31AD23FD86 93.127.216.111:7055 F9EEDC6ECCC301A1B59122651658AD2476ED3CA1
+DirAuthority test001a orport=5056 no-v2 v3ident=9BECD814BFB4F078FBBEB56D5E51F34A0D364B3A 93.127.216.111:7056 66B7E5A12A585D41256F866B5CC97ACE15CA7AC2
+DirAuthority test002a orport=5057 no-v2 v3ident=D7AA5EEEA0288AD6F58302CF0FCE477D7B59E85A 93.127.216.111:7057 371E875605E2ADE3B2AEA2C4FF20F0F197D0AFDF
+DirAuthority test003a orport=5058 no-v2 v3ident=B8672FFE32B1BE2A2EFE3534B7A75A27F6804503 93.127.216.111:7058 0FC4EB502F5B7A9A7911017248BAFD06C0026E7E
+```
 
 # Tor Browser
 ```
