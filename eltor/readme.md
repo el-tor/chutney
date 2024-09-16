@@ -42,7 +42,7 @@ sudo ifconfig lo0 alias 127.0.0.10 netmask 0xff000000
 ```
 code ~/Library/Application\ Support/TorBrowser-Data/Tor/torrc
 ```
-check out the `tor-chutney-sample-torrc` file in this directory
+check out the `tor-chutney-sample-torrc` file in this directory. Make sure to replace $HOME with your home directory i.e /Users/yourname
 
 9. then run `eltor/start.sh`
 
