@@ -11,3 +11,4 @@
 eltor/lightning
 eltor/tor-proxy/tor
 eltor/env.sh
+eltor/tor-proxy/state

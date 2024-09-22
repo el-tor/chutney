@@ -25,3 +25,7 @@ TestingDirAuthVoteHSDir *
 TestingTorNetwork 1
 V3AuthNIntervalsValid 2
 UseDefaultFallbackDirs 0
+SafeLogging 1
+MapAddress satsname22.onion fdth5djkloloo52srbi7hvsy3z7hsb7g62ce66inu6wjkg6xfmiej6id.onion
+MapAddress woot.onion https://woot.com
+SafeSocks 0

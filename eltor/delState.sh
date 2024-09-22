@@ -38,4 +38,4 @@ find "$BASE_DIR" -type f \( -name "cached-consensus" \
 # Find and delete the diff-cache folder
 find "$BASE_DIR" -type d -name "diff-cache" -exec rm -rf {} +
 
-echo "All cache, consensus files, and the diff-cache folder have been deleted from $BASE_DIR and its subfolders."
+echo "All cache, consensus files, and the diff-cache folder have been deleted from $BASE_DIR and its subfolders. and $HOME/Library/Application Support/TorBrowser-Data/Tor"
