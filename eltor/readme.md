@@ -70,6 +70,36 @@ DirAuthority test002a orport=5057 no-v2 v3ident=D7AA5EEEA0288AD6F58302CF0FCE477D
 DirAuthority test003a orport=5058 no-v2 v3ident=B8672FFE32B1BE2A2EFE3534B7A75A27F6804503 93.127.216.111:7058 0FC4EB502F5B7A9A7911017248BAFD06C0026E7E
 ```
 
+# Directory Authority
+http://127.0.0.10:7055/tor/status-vote/current/consensus 
+
+### Voting Delays
+torrc config on the DAs
+```
+# Directory Authority Config
+V3AuthVotingInterval 30 seconds
+V3AuthVoteDelay 5 seconds
+V3AuthDistDelay 5 seconds
+# Minimum uptime required for a relay to be considered a hidden service directory
+MinUptimeHidServDirectoryV2 30 seconds
+# Fraction of the bandwidth threshold for voting on the Guard flag
+AuthDirVoteGuardBwThresholdFraction 0.01
+# Minimum time known for a relay to be considered for the Guard flag
+AuthDirVoteGuardGuaranteeTimeKnown 30 seconds 
+# Minimum weighted fractional uptime for a relay to be considered for the Guard flag
+AuthDirVoteGuardGuaranteeWFU 0.01
+```
+
+# Fingerprint tool
+To get the fingerprint of
+```
+r plebrelay1 Yn5iNtnpgLLJV15wDalQw3SiVo8 EQ2G56Jg8OBLPBIfZRi5YJCUkMI 2024-10-03 02:00:40 172.81.178.30 5061 0
+```
+run
+```
+python eltor/fingerprint-tool.py Yn5iNtnpgLLJV15wDalQw3SiVo8
+```
+
 # Tor Browser
 ```
 cd "/Applications/Tor Browser.app/Contents/Resources/TorBrowser/Tor"
@@ -271,7 +301,8 @@ network.proxy.socks_host : 127.0.0.1
 network.proxy.socks_port : 9006 (9150 default)
 ```
 
-
+Troubleshooting
+==================
 ## Python
 You might need an older version of python.
 ```
@@ -280,5 +311,22 @@ sudo apt update
 sudo apt install python3.8
 sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.8 2
 sudo update-alternatives --config python3
+```
 
+You need to use python v3.8.10. Sometimes python3 does not work and points to the wrong version. 
+you can check by running
+```
+pyenv local 3.8.10
+python --version
+python3 --version
+```
+
+If the version mismatches add this code below to your `~/.profile` or `~/.bashrc` or `~/.zshrc`
+
+```
+#### To make pyenv work on python and python3
+export PATH="$HOME/.pyenv/bin:$PATH"
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
+##### End of pyenv
 ```

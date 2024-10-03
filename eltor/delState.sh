@@ -20,11 +20,15 @@ FILES_TO_DELETE=(
     "cached-microdescs"
     "cached-microdescs.new"
     "state"
+    "sr-state"
     "unverified-consensus"
 )
 
 # Find and delete the files
 find "$BASE_DIR" -type f \( -name "cached-consensus" \
+    -o -name "cached-certs" \
+    -o -name "cached-extrainfo" \
+    -o -name "cached-extrainfo.new" \
     -o -name "cached-consensus.new" \
     -o -name "cached-descriptors" \
     -o -name "cached-descriptors.new" \
@@ -32,7 +36,12 @@ find "$BASE_DIR" -type f \( -name "cached-consensus" \
     -o -name "cached-microdesc-consensus.new" \
     -o -name "cached-microdescs" \
     -o -name "cached-microdescs.new" \
+    -o -name "my-consensus-microdesc" \
+    -o -name "my-consensus-ns" \
+    -o -name "router-stability" \
     -o -name "state" \
+    -o -name "sr-state" \
+    -o -name "v3-status-votes" \
     -o -name "unverified-consensus" \) -exec rm -f {} +
 
 # Find and delete the diff-cache folder
