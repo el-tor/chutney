@@ -1,0 +1,131 @@
+TestingTorNetwork 1
+
+# Custom ElTor options to tell the directory authorities to allow all relays (instead of having to wait a day, or so, to vote and check bandwidth, uptime, etc.)
+AllowAnyRelay 1
+
+## Rapid Bootstrap Testing Options ##
+# These typically launch a working minimal Tor network in ~20s
+# These parameters make tor networks bootstrap fast,
+# but can cause consensus instability and network unreliability
+# (Some are also bad for security.)
+#
+# We need at least 3 descriptors to build circuits.
+# In a 3 relay network, 0.67 > 2/3, so we try hard to get 3 descriptors.
+# In larger networks, 0.67 > 2/N, so we try hard to get >=3 descriptors.
+PathsNeededToBuildCircuits 0.67
+TestingDirAuthVoteExit *
+TestingDirAuthVoteHSDir *
+V3AuthNIntervalsValid 2
+
+## Always On Testing Options ##
+# We enable TestingDirAuthVoteGuard to avoid Guard stability requirements
+TestingDirAuthVoteGuard *
+# We set TestingMinExitFlagThreshold to 0 to avoid Exit bandwidth requirements
+TestingMinExitFlagThreshold 0
+# VoteOnHidServDirectoriesV2 needs to be set for HSDirs to get the HSDir flag
+#Default VoteOnHidServDirectoriesV2 1
+
+## Options that we always want to test ##
+DataDirectory /root/code/chutney/net/nodes.1726268114/000a
+RunAsDaemon 1
+ConnLimit 60
+Nickname test000a
+# Let tor close connections gracefully before exiting
+ShutdownWaitLength 2
+DisableDebuggerAttachment 0
+
+ControlPort 8055
+# Use ControlSocket rather than ControlPort unix: to support older tors
+ControlSocket /root/code/chutney/net/nodes.1726268114/000a/control
+CookieAuthentication 1
+PidFile /root/code/chutney/net/nodes.1726268114/000a/pid
+
+Log notice file /root/code/chutney/net/nodes.1726268114/000a/notice.log
+Log info file /root/code/chutney/net/nodes.1726268114/000a/info.log
+# Turn this off to save space
+# Log debug file /root/code/chutney/net/nodes.1726268114/000a/debug.log
+ProtocolWarnings 1
+SafeLogging 0
+LogTimeGranularity 1
+
+# Options that we can disable at runtime, based on env vars
+
+# Use tor's sandbox. Defaults to 1 on Linux, and 0 on other platforms.
+# Use CHUTNEY_TOR_SANDBOX=0 to disable, if tor's sandbox doesn't work with
+# your glibc.
+Sandbox 1
+
+# Ask all child tor processes to exit when chutney's test-network.sh exits
+# (if the CHUTNEY_*_TIME options leave the network running, this option is
+# disabled)
+#__OwningControllerProcess 0
+
+DirAuthority test000a orport=5055 no-v2 v3ident=08E3B412A2F9B7BE30CAC56285EB0A31AD23FD86 93.127.216.111:7055 F9EEDC6ECCC301A1B59122651658AD2476ED3CA1
+DirAuthority test001a orport=5056 no-v2 v3ident=9BECD814BFB4F078FBBEB56D5E51F34A0D364B3A 93.127.216.111:7056 66B7E5A12A585D41256F866B5CC97ACE15CA7AC2
+DirAuthority test002a orport=5057 no-v2 v3ident=D7AA5EEEA0288AD6F58302CF0FCE477D7B59E85A 93.127.216.111:7057 371E875605E2ADE3B2AEA2C4FF20F0F197D0AFDF
+DirAuthority test003a orport=5058 no-v2 v3ident=B8672FFE32B1BE2A2EFE3534B7A75A27F6804503 93.127.216.111:7058 0FC4EB502F5B7A9A7911017248BAFD06C0026E7E
+
+
+SocksPort 0
+OrPort 5055
+Address 93.127.216.111
+
+# Must be included before exit-v{4,6}.i
+ExitRelay 0
+
+# These options are set here so they apply to IPv4 and IPv6 Exits
+#
+# Tell Exits to avoid using DNS: otherwise, chutney will fail if DNS fails
+# (Chutney only accesses 127.0.0.1 and ::1, so it doesn't need DNS)
+ServerDNSDetectHijacking 0
+ServerDNSTestAddresses
+# If this option is /dev/null, or any other empty or unreadable file, tor exits
+# will not use DNS. Otherwise, DNS is enabled with this config.
+# (If the following line is commented out, tor uses /etc/resolv.conf.)
+ServerDNSResolvConfFile /run/systemd/resolve/stub-resolv.conf
+
+DirPort 7055
+
+AuthoritativeDirectory 1
+V3AuthoritativeDirectory 1
+ContactInfo auth0@test.test
+
+# Disable authority to relay/bridge reachability checks
+# These checks happen every half hour, even in testing networks
+# As of tor 0.4.3, there is no way to speed up these checks
+AssumeReachable 1
+
+# Speed up the consensus cycle as fast as it will go.
+# If clock desynchronisation is an issue, increase these voting times.
+
+# V3AuthVotingInterval and TestingV3AuthInitialVotingInterval can be:
+#   10, 12, 15, 18, 20, ...
+# TestingV3AuthInitialVotingInterval can also be:
+#    5, 6, 8, 9
+# They both need to evenly divide 24 hours.
+
+# Initial Vote + Initial Dist must be less than Initial Interval
+#
+# Mixed 0.3.3 and 0.3.4 networks are unstable, due to timing changes.
+# When all 0.3.3 and earlier versions are obsolete, we may be able to revert to
+# TestingV3AuthInitialVotingInterval 5
+TestingV3AuthInitialVotingInterval 30 seconds
+TestingV3AuthInitialVoteDelay 5 seconds
+TestingV3AuthInitialDistDelay 5 seconds
+# Vote + Dist must be less than Interval/2, because when there's no consensus,
+# tor uses Interval/2 as the voting interval
+#
+# Keep in sync with scripts/chutney_tests/verify.py V3_AUTH_VOTING_INTERVAL
+V3AuthVotingInterval 30 seconds
+V3AuthVoteDelay 5 seconds
+V3AuthDistDelay 5 seconds
+# Minimum uptime required for a relay to be considered a hidden service directory
+MinUptimeHidServDirectoryV2 30 seconds
+# Fraction of the bandwidth threshold for voting on the Guard flag
+AuthDirVoteGuardBwThresholdFraction 0.01
+# Minimum time known for a relay to be considered for the Guard flag
+AuthDirVoteGuardGuaranteeTimeKnown 30 seconds 
+# Minimum weighted fractional uptime for a relay to be considered for the Guard flag
+AuthDirVoteGuardGuaranteeWFU 0.01
+
+ConsensusParams cc_alg=2
