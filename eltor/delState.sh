@@ -6,12 +6,14 @@ rm cached-microdescs.new
 rm cached-certs 
 rm lock
 
-# Define the base directory
-BASE_DIR="$HOME/code/chutney/net"
+BASE_DIR="$HOME/code/chutney/net/nodes"
 
 # List of files to delete
 FILES_TO_DELETE=(
     "cached-consensus"
+    "cached-certs"
+    "cached-extrainfo"
+    "cached-extrainfo.new"
     "cached-consensus.new"
     "cached-descriptors"
     "cached-descriptors.new"
@@ -19,30 +21,23 @@ FILES_TO_DELETE=(
     "cached-microdesc-consensus.new"
     "cached-microdescs"
     "cached-microdescs.new"
+    "my-consensus-microdesc"
+    "my-consensus-ns"
+    "router-stability"
     "state"
     "sr-state"
     "unverified-consensus"
+    "v3-status-votes"
 )
 
-# Find and delete the files
-find "$BASE_DIR" -type f \( -name "cached-consensus" \
-    -o -name "cached-certs" \
-    -o -name "cached-extrainfo" \
-    -o -name "cached-extrainfo.new" \
-    -o -name "cached-consensus.new" \
-    -o -name "cached-descriptors" \
-    -o -name "cached-descriptors.new" \
-    -o -name "cached-microdesc-consensus" \
-    -o -name "cached-microdesc-consensus.new" \
-    -o -name "cached-microdescs" \
-    -o -name "cached-microdescs.new" \
-    -o -name "my-consensus-microdesc" \
-    -o -name "my-consensus-ns" \
-    -o -name "router-stability" \
-    -o -name "state" \
-    -o -name "sr-state" \
-    -o -name "v3-status-votes" \
-    -o -name "unverified-consensus" \) -exec rm -f {} +
+# Loop through each subdirectory and delete the specified files
+for dir in "$BASE_DIR"/*; do
+    if [ -d "$dir" ]; then
+        for file in "${FILES_TO_DELETE[@]}"; do
+            find "$dir" -type f -name "$file" -exec rm -f {} +
+        done
+    fi
+done
 
 # Find and delete the diff-cache folder
 find "$BASE_DIR" -type d -name "diff-cache" -exec rm -rf {} +
