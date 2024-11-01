@@ -45,10 +45,10 @@ DisableDebuggerAttachment 0
 
 ControlPort 9362
 
-# Log notice file $HOME/notice.log
-# Log info file $HOME/info.log
+# Log notice file YOUR_HOME_DIR/notice.log
+# Log info file YOUR_HOME_DIR/info.log
 # Turn this off to save space
-# Log debug file $HOME/debug.log
+# Log debug file YOUR_HOME_DIR/debug.log
 ProtocolWarnings 1
 SafeLogging 0
 LogTimeGranularity 1

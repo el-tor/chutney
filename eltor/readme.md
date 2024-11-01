@@ -42,7 +42,7 @@ sudo ifconfig lo0 alias 127.0.0.10 netmask 0xff000000
 ```
 code ~/Library/Application\ Support/TorBrowser-Data/Tor/torrc
 ```
-check out the `tor-chutney-sample-torrc` file in this directory. Make sure to replace $HOME with your home directory i.e /Users/yourname
+check out the `tor-chutney-sample-torrc` file in this directory. Make sure to replace $HOME (YOUR_HOME_DIR) with your home directory i.e /Users/yourname
 
 9. then run `eltor/start.sh`
 
@@ -57,7 +57,10 @@ check out the `tor-chutney-sample-torrc` file in this directory. Make sure to re
 
 # Running a relay
 See `tor-relay-sample-torrc` sample config file. 
-Make sure to configure your Address (IP), Nickname, OrPort (you might need to allow this port thru your firewall). 
+Make sure to configure your Address (IP), Nickname, OrPort and set `AssumeReachable 1`. 
+
+You might need to allow the OrPort port thru your firewall or UPNP via https://github.com/Yawning/tor-fw-helper). 
+
 Run this command on the computer you want to become a El Tor Relay:
 ```
 tor -f /path/to/torrc

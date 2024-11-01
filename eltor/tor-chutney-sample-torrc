@@ -6,9 +6,9 @@
 
 
 AllowNonRFC953Hostnames 1
-ClientOnionAuthDir $HOME/Library/Application Support/TorBrowser-Data/Tor/onion-auth
+ClientOnionAuthDir YOUR_HOME_DIR/Library/Application Support/TorBrowser-Data/Tor/onion-auth
 ControlPort 9051
-DataDirectory $HOME/Library/Application Support/TorBrowser-Data/Tor
+DataDirectory YOUR_HOME_DIR/Library/Application Support/TorBrowser-Data/Tor
 DirAuthority test000a orport=5055 no-v2 v3ident=653EF7D6D6FFAE753389B807DA6CA9E8FAB6FC03 127.0.0.10:7055 A7649D89B48EEE5FB1C4583C73F8DA6888A19C12
 DirAuthority test001a orport=5056 no-v2 v3ident=6E3F628396DFD5CDBC11ED07737E773DC41B0854 127.0.0.11:7056 44629A3B9DE184A6A0DBA0A0DE54916D24339B2B
 DirAuthority test002a orport=5057 no-v2 v3ident=E2810899CDCA0E985EA0031F9636E4A55FF8D416 127.0.0.12:7057 52A4FEA9DF61CEBA58C8BF5F1F651A732EFEAB14
@@ -29,9 +29,9 @@ ElTorPreimageHop6 68b4e782fafbd5a057ec4c277f01da48db73dd67326ec4458ff89daffba186
 ElTorPreimageHop7 68b4e782fafbd5a057ec4c277f01da48db73dd67326ec4458ff89daffba186e3
 GeoIPFile /Applications/Tor Browser.app/Contents/Resources/TorBrowser/Tor/geoip
 GeoIPv6File /Applications/Tor Browser.app/Contents/Resources/TorBrowser/Tor/geoip6
-Log notice file $HOME/code/chutney/net/nodes/browser/notice.log
-Log info file $HOME/code/chutney/net/nodes/browser/info.log
-Log debug file $HOME/code/chutney/net/nodes/browser/debug.log
+Log notice file YOUR_HOME_DIR/code/chutney/net/nodes/browser/notice.log
+Log info file YOUR_HOME_DIR/code/chutney/net/nodes/browser/info.log
+Log debug file YOUR_HOME_DIR/code/chutney/net/nodes/browser/debug.log
 Nickname torbrowser
 PathsNeededToBuildCircuits 0.670000
 TestingDirAuthVoteExit *

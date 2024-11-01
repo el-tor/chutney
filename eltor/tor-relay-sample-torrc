@@ -24,10 +24,10 @@ DisableDebuggerAttachment 0
 
 ControlPort 8061
 
-# Log notice file $HOME/notice.log
-# Log info file $HOME/info.log
+# Log notice file YOUR_HOME_DIR/notice.log
+# Log info file YOUR_HOME_DIR/info.log
 # Turn this off to save space
-# Log debug file $HOME/debug.log
+# Log debug file YOUR_HOME_DIR/debug.log
 ProtocolWarnings 1
 SafeLogging 0
 LogTimeGranularity 1
@@ -108,3 +108,5 @@ RelayBandwidthRate 0
 # This allows unlimited burst rate.
 RelayBandwidthBurst 0
 AccountingMax 0
+
+AssumeReachable 1
