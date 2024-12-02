@@ -6,9 +6,11 @@ DirAuthority test001a orport=5056 no-v2 v3ident=9BECD814BFB4F078FBBEB56D5E51F34A
 DirAuthority test002a orport=5057 no-v2 v3ident=D7AA5EEEA0288AD6F58302CF0FCE477D7B59E85A 93.127.216.111:7057 371E875605E2ADE3B2AEA2C4FF20F0F197D0AFDF
 DirAuthority test003a orport=5058 no-v2 v3ident=B8672FFE32B1BE2A2EFE3534B7A75A27F6804503 93.127.216.111:7058 0FC4EB502F5B7A9A7911017248BAFD06C0026E7E
 
-DataDirectory ~/eltor/chutney/tor-proxy/eltor
-Log notice file ~/eltor/chutney/tor-proxy/eltor/notices.log
+DataDirectory eltor-data-prod
+Log notice file eltor-data-prod/notices.log
 #RunAsDaemon 1
+CookieAuthentication 1
+ControlPort 9097
 
 MapAddress satsname22.onion 3zlcerfvzmmdj2zv5j2lnz32762dwukcznrimbxllve4dzbjhmxkc4id.onion
 PathsNeededToBuildCircuits 0.670000

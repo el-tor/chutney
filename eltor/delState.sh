@@ -1,12 +1,12 @@
-cd "$HOME/Library/Application Support/TorBrowser-Data/Tor"
-rm state
-rm cached-microdesc-consensus
-rm cached-microdescs
-rm cached-microdescs.new
-rm cached-certs 
-rm lock
+#!/bin/bash
 
-BASE_DIR="$HOME/code/chutney/net/nodes"
+# Define base directories
+BASE_DIRS=(
+    "$HOME/code/chutney/net/nodes"
+    "$HOME/code/chutney/eltor/tor-proxy/eltor-data"
+    "$HOME/code/chutney/eltor/tor-proxy/eltor-data-prod"
+    "$HOME/code/chutney/eltor/tor-proxy/tor-data"
+)
 
 # List of files to delete
 FILES_TO_DELETE=(
@@ -30,16 +30,20 @@ FILES_TO_DELETE=(
     "v3-status-votes"
 )
 
-# Loop through each subdirectory and delete the specified files
-for dir in "$BASE_DIR"/*; do
-    if [ -d "$dir" ]; then
-        for file in "${FILES_TO_DELETE[@]}"; do
-            find "$dir" -type f -name "$file" -exec rm -f {} +
-        done
+# Loop through each base directory
+for BASE_DIR in "${BASE_DIRS[@]}"; do
+    echo "Processing directory: $BASE_DIR"
+    
+    # Check if directory exists
+    if [ ! -d "$BASE_DIR" ]; then
+        echo "Directory does not exist: $BASE_DIR"
+        continue
     fi
+    
+    # Delete files
+    for file in "${FILES_TO_DELETE[@]}"; do
+        find "$BASE_DIR" -type f -name "$file" -exec rm -f {} \;
+    done
 done
 
-# Find and delete the diff-cache folder
-find "$BASE_DIR" -type d -name "diff-cache" -exec rm -rf {} +
-
-echo "All cache, consensus files, and the diff-cache folder have been deleted from $BASE_DIR and its subfolders. and $HOME/Library/Application Support/TorBrowser-Data/Tor"
+echo "Cleanup complete"

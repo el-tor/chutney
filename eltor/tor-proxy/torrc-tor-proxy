@@ -1,6 +1,6 @@
 SocksPort 0.0.0.0:9098
 DNSPort 0.0.0.0:8852
-DataDirectory ~/eltor/chutney/tor-proxy/tor
-Log notice file ~/eltor/chutney/tor-proxy/tor/notices.log
+DataDirectory tor-data
+Log notice file tor-data/notices.log
 # RunAsDaemon 1
 Nickname torproxy
