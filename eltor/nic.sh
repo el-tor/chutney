@@ -1,3 +1,4 @@
+echo "Setting up network interfaces..."
 sudo ifconfig lo0 alias 127.0.0.10 netmask 0xff000000
 sudo ifconfig lo0 alias 127.0.0.11 netmask 0xff000000
 sudo ifconfig lo0 alias 127.0.0.12 netmask 0xff000000
