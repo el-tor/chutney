@@ -15,3 +15,5 @@ eltor/tor-proxy/state
 eltor/tor-proxy/tor-data
 eltor/tor-proxy/eltor-data
 eltor/tor-proxy/eltor-data-prod
+
+**/myenv/**
