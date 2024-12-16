@@ -16,6 +16,7 @@ BASE_DIRS=(
     "$HOME/code/chutney/eltor/tor-proxy/eltor-data"
     "$HOME/code/chutney/eltor/tor-proxy/eltor-data-prod"
     "$HOME/code/chutney/eltor/tor-proxy/tor-data"
+    "$HOME/.tor"
 )
 
 # List of files to delete

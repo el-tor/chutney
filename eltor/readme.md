@@ -136,6 +136,11 @@ code ~/Library/Application\ Support/TorBrowser-Data/Tor/torrc
 ```
 check out the `tor-chutney-sample-torrc` file in this directory
 
+debug log 
+```
+code ~/Library/Application\ Support/TorBrowser-Data/Tor/debug.log
+```
+
 ### Symobilic Links
 (replace nodes.1717275556 with your values below)
 ```
