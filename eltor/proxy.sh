@@ -21,4 +21,4 @@ else
 fi
 
 # OLD
-# $HOME/code/tor/src/app/tor -f $HOME/code/chutney/eltor/tor-proxy-torrc
+# $HOME/code/eltor/src/app/tor -f $HOME/code/chutney/eltor/tor-proxy-torrc

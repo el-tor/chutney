@@ -4,11 +4,11 @@ Quickstart
 ========================================================================================================================
 1. Make sure the eltor tor drop in replacement binary is copied to these locations
 ```
-$HOME/code/tor/src/app/tor
+$HOME/code/eltor/src/app/tor
 /Applications/Tor Browser.app/Contents/MacOS/Tor/tor
 ```
 You might want to run a command like this to copy from the eltor repo (after you run make):
-`cp $HOME/code/tor/src/app/tor "/Applications/Tor Browser.app/Contents/MacOS/Tor/tor"`
+`cp $HOME/code/eltor/src/app/tor "/Applications/Tor Browser.app/Contents/MacOS/Tor/tor"`
 2. navigate to the chutney directory `cd ../`
 ** *these scripts were tested on a mac (you might need to tweak for your OS)*
 3.  Set the environment variable to use your local Tor binary. create an env.sh script in eltor/env.sh
@@ -17,9 +17,9 @@ touch eltor/env.sh
 ```
 add the following to your env files with your file locations
 ```
-export TOR_DIR=$HOME/code/tor/src/app/tor
-export CHUTNEY_TOR=$HOME/code/tor/src/app/tor
-export CHUTNEY_TOR_GENCERT=$HOME/code/tor/src/tools/tor-gencert
+export TOR_DIR=$HOME/code/eltor/src/app/tor
+export CHUTNEY_TOR=$HOME/code/eltor/src/app/tor
+export CHUTNEY_TOR_GENCERT=$HOME/code/eltor/src/tools/tor-gencert
 export CHUTNEY_DEBUG=true
 export TOR_LOG="debug stdout"
 # export TORRC_CUSTOM="/Applications/Tor Browser.app/Contents/Resources/TorBrowser/Tor/torrc"
@@ -144,9 +144,9 @@ code ~/Library/Application\ Support/TorBrowser-Data/Tor/debug.log
 ### Symobilic Links
 (replace nodes.1717275556 with your values below)
 ```
-sudo ln -s $HOME/code/tor/src/app/tor /Applications/Tor\ Browser.app/Contents/MacOS/Tor/tor
+sudo ln -s $HOME/code/eltor/src/app/tor /Applications/Tor\ Browser.app/Contents/MacOS/Tor/tor
 
-sudo cp $HOME/code/tor/src/app/tor /Applications/Tor\ Browser.app/Contents/MacOS/Tor/tor
+sudo cp $HOME/code/eltor/src/app/tor /Applications/Tor\ Browser.app/Contents/MacOS/Tor/tor
 
 ln -s $HOME/code/chutney/net/nodes.1717275556 $HOME/code/chutney/net/nodes
 ```
@@ -295,7 +295,7 @@ TOR_CMD="EXTENDCIRCUIT 0 280FCC76D052654361237F95A068F0C618353EF5,B2853E928BF1DA
 `mkdir -p $HOME/code/chutney/net/nodes/009h/hidden_service`
 - Run Tor to generate the hidden service keys
 ```
-$HOME/code/tor/src/app/tor --runasdaemon 0 --DataDirectory $HOME/code/chutney/net/nodes/009h/hidden_service \
+$HOME/code/eltor/src/app/tor --runasdaemon 0 --DataDirectory $HOME/code/chutney/net/nodes/009h/hidden_service \
      --HiddenServiceDir $HOME/code/chutney/net/nodes/009h/hidden_service \
      --HiddenServiceVersion 3 \
      --HiddenServicePort "80 127.0.0.1:4747"
