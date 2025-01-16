@@ -2,7 +2,7 @@ python3 -m venv myenv
 source myenv/bin/activate  
 
 # To install a new packages
-# pip install stem
+# pip install stem Mnemonic
 # pip install pycurl --only-binary :all
 
 # To save the packages
