@@ -2,4 +2,6 @@
 
 eltor/del.sh
 
+eltor/delState.sh
+
 eltor/proxy-stop.sh
