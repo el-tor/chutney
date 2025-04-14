@@ -2,6 +2,7 @@
 
 # Define base directories
 BASE_DIRS=(
+    "$HOME/code/eltord/tmp/tor-rust"
     "$HOME/Library/Application Support/TorBrowser-Data/Tor"
     "$HOME/code/chutney/net/nodes/000a"
     "$HOME/code/chutney/net/nodes/001a"

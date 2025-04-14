@@ -71,6 +71,13 @@ See `tor-relay-sample-torrc` sample config file.
 Make sure to configure your Address (IP), Nickname, OrPort and set `AssumeReachable 1`. 
 
 You might need to allow the OrPort port thru your firewall or UPNP via https://github.com/Yawning/tor-fw-helper). 
+You can also check if you router supports PCP Pinholing using the miniupnp http://github.com/miniupnp/miniupnp.
+Here is an example of that command using IPv6
+```
+upnpc -m en0 -a 2001:db8::1234 1024 1024 TCP
+# to test open ports
+upnpc -m en0 -l
+```
 
 Run this command on the computer you want to become a El Tor Relay:
 ```
