@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # Directory to search for log files
-LOG_DIR="$HOME/code/chutney/net/nodes.1725051519"
+# LOG_DIR="$HOME/code/chutney/net/nodes.1725051519"
+LOG_DIR="$HOME/code/chutney/net/nodes.1758155071"
 
 # Check if the directory exists
 if [ ! -d "$LOG_DIR" ]; then

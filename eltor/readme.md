@@ -341,11 +341,19 @@ Troubleshooting
 ## Python
 You might need an older version of python.
 ```
-sudo add-apt-repository ppa:deadsnakes/ppa
-sudo apt update
-sudo apt install python3.8
-sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.8 2
-sudo update-alternatives --config python3
+curl https://pyenv.run | bash
+
+# Then add the following to your ~/.bashrc or ~/.profile:
+export PATH="$HOME/.pyenv/bin:$PATH"
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
+
+# Restart your shell or run:
+source ~/.bashrc
+
+# 2. Install Python 3.8.10 with pyenv
+pyenv install 3.8.10
+pyenv local 3.8.10
 ```
 
 You need to use python v3.8.10. Sometimes python3 does not work and points to the wrong version. 
